@@ -24,6 +24,7 @@ public class Empleado {
 
     private BigDecimal sueldo;
 
+    @Column(name = "estado_id")
     private int estado;
 
     @Temporal(TemporalType.DATE)
