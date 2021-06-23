@@ -7,5 +7,5 @@ public class InfoEmpleadoNuevo {
     public String nombre;
     public Integer edad;
     public BigDecimal sueldo;
-    public Integer empleadaId;
+    public Integer categoriaId;
 }

@@ -31,7 +31,7 @@ public class EmpleadoController {
         empleado.setSueldo(infoEmpleado.sueldo);
         empleado.setEstado(EstadoEmpleadoEnum.ACTIVO);
         empleado.setFechaAlta(new Date());
-        empleado.setCategoria(categoriaService.buscarCategoria(infoEmpleado.empleadaId));
+        empleado.setCategoria(categoriaService.buscarCategoria(infoEmpleado.categoriaId));
 
         service.crearEmpleado(empleado);
 
