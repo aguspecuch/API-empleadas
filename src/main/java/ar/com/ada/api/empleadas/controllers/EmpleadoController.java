@@ -7,7 +7,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import ar.com.ada.api.empleadas.entities.Empleado;
-import ar.com.ada.api.empleadas.entities.Empleado.EstadoEmpleadoEnum;
 import ar.com.ada.api.empleadas.models.request.InfoEmpleadoNuevo;
 import ar.com.ada.api.empleadas.models.response.GenericResponse;
 import ar.com.ada.api.empleadas.services.*;
@@ -24,13 +23,7 @@ public class EmpleadoController {
     @PostMapping("/empleados")
     public ResponseEntity<?> crearEmpleado(@RequestBody InfoEmpleadoNuevo infoEmpleado){
         
-        Empleado empleado = new Empleado();
-
-        empleado.setNombre(infoEmpleado.nombre);
-        empleado.setEdad(infoEmpleado.edad);
-        empleado.setSueldo(infoEmpleado.sueldo);
-        empleado.setEstado(EstadoEmpleadoEnum.ACTIVO);
-        empleado.setFechaAlta(new Date());
+        Empleado empleado = new Empleado(infoEmpleado.nombre, infoEmpleado.edad, infoEmpleado.sueldo);
         empleado.setCategoria(categoriaService.buscarCategoria(infoEmpleado.categoriaId));
 
         service.crearEmpleado(empleado);

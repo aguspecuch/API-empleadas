@@ -9,6 +9,17 @@ import javax.persistence.*;
 @Table(name="empleado")
 public class Empleado {
     
+    public Empleado(){
+    }
+
+    public Empleado(String nombre, Integer edad, BigDecimal sueldo){
+        this.nombre = nombre;
+        this.edad = edad;
+        this.sueldo = sueldo;
+        this.setEstado(EstadoEmpleadoEnum.ACTIVO);
+        this.fechaAlta = new Date();
+    }
+
     @Id
     @Column(name="empleado_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
