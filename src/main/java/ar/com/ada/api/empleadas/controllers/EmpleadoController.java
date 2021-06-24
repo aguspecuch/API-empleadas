@@ -55,5 +55,11 @@ public class EmpleadoController {
 
         return ResponseEntity.ok(r);
     }
+
+    @GetMapping("/empleados/categorias/{id}")
+    public ResponseEntity<List<Empleado>> traerEmpleadosByCategoria(@PathVariable Integer id){
+
+        return ResponseEntity.ok(service.traerEmpleadosByCategoria(id));
+    }
     
 }

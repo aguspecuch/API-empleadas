@@ -7,6 +7,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import ar.com.ada.api.empleadas.entities.Categoria;
 import ar.com.ada.api.empleadas.entities.Empleado;
 import ar.com.ada.api.empleadas.entities.Empleado.EstadoEmpleadoEnum;
 import ar.com.ada.api.empleadas.models.request.InfoEmpleadoNuevo;
@@ -51,5 +52,13 @@ public class EmpleadoService {
         empleado.setFechaBaja(new Date());
 
         repo.save(empleado);        
+    }
+
+    public List<Empleado> traerEmpleadosByCategoria(Integer catId){
+
+        Categoria categoria = categoriaService.buscarCategoria(catId);
+
+        return categoria.getEmpleados();
+        
     }
 }
