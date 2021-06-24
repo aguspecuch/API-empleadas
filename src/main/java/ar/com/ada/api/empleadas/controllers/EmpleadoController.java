@@ -37,5 +37,11 @@ public class EmpleadoController {
         
         return ResponseEntity.ok(service.traerEmpleados());
     }
+
+    @GetMapping("/empleados/{id}")
+    public ResponseEntity<Empleado> traerEmpleado(@PathVariable Integer id){
+
+        return ResponseEntity.ok(service.traerEmpleado(id));
+    }
     
 }
