@@ -1,5 +1,6 @@
 package ar.com.ada.api.empleadas.services;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -7,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ar.com.ada.api.empleadas.entities.Empleado;
+import ar.com.ada.api.empleadas.entities.Empleado.EstadoEmpleadoEnum;
 import ar.com.ada.api.empleadas.models.request.InfoEmpleadoNuevo;
 import ar.com.ada.api.empleadas.repos.EmpleadoRepository;
 
@@ -40,5 +42,14 @@ public class EmpleadoService {
             return resultado.get();
 
         return null;
+    }
+
+    public void bajaEmpleado(Integer empleadoId){
+
+        Empleado empleado = this.traerEmpleado(empleadoId);
+        empleado.setEstado(EstadoEmpleadoEnum.BAJA);
+        empleado.setFechaBaja(new Date());
+
+        repo.save(empleado);        
     }
 }

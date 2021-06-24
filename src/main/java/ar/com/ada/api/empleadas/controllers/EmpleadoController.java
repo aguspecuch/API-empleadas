@@ -43,5 +43,17 @@ public class EmpleadoController {
 
         return ResponseEntity.ok(service.traerEmpleado(id));
     }
+
+    @DeleteMapping("/empleados/{id}")
+    public ResponseEntity<GenericResponse> bajaEmpleado(@PathVariable Integer id){
+
+        service.bajaEmpleado(id);
+
+        GenericResponse r = new GenericResponse();
+        r.isOk = true;
+        r.message = "Empleado dado de baja con exito";
+
+        return ResponseEntity.ok(r);
+    }
     
 }
