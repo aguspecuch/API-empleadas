@@ -23,14 +23,10 @@ public class EmpleadoController {
     @PostMapping("/empleados")
     public ResponseEntity<?> crearEmpleado(@RequestBody InfoEmpleadoNuevo infoEmpleado){
         
-        Empleado empleado = new Empleado(infoEmpleado.nombre, infoEmpleado.edad, infoEmpleado.sueldo);
-        empleado.setCategoria(categoriaService.buscarCategoria(infoEmpleado.categoriaId));
-
-        service.crearEmpleado(empleado);
+        service.crearEmpleado(infoEmpleado);
 
         GenericResponse r = new GenericResponse();
         r.isOk = true;
-        r.id = empleado.getEmpleadoId();
         r.message = "Empleado creado con exito.";
 
         return ResponseEntity.ok(r);

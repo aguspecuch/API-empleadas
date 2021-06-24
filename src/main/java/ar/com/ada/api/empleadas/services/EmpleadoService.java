@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ar.com.ada.api.empleadas.entities.Empleado;
+import ar.com.ada.api.empleadas.models.request.InfoEmpleadoNuevo;
 import ar.com.ada.api.empleadas.repos.EmpleadoRepository;
 
 @Service
@@ -14,7 +15,13 @@ public class EmpleadoService {
     @Autowired
     EmpleadoRepository repo;
 
-    public void crearEmpleado(Empleado empleado){
+    @Autowired
+    CategoriaService categoriaService;
+
+    public void crearEmpleado(InfoEmpleadoNuevo infoEmpleado){
+
+        Empleado empleado = new Empleado(infoEmpleado.nombre, infoEmpleado.edad, infoEmpleado.sueldo);
+        empleado.setCategoria(categoriaService.buscarCategoria(infoEmpleado.categoriaId));
 
         repo.save(empleado);
     }
