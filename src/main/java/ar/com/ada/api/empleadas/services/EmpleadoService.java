@@ -22,7 +22,7 @@ public class EmpleadoService {
     @Autowired
     CategoriaService categoriaService;
 
-    public void crearEmpleado(InfoEmpleadoNuevo infoEmpleado){
+    public void altaEmpleado(InfoEmpleadoNuevo infoEmpleado){
 
         Empleado empleado = new Empleado(infoEmpleado.nombre, infoEmpleado.edad, infoEmpleado.sueldo);
         empleado.setCategoria(categoriaService.buscarCategoria(infoEmpleado.categoriaId));
@@ -33,6 +33,7 @@ public class EmpleadoService {
     public List<Empleado> traerEmpleados(){
 
         return repo.findAll();
+
     }
 
     public Empleado traerEmpleado(Integer empleadoId){

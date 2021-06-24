@@ -15,9 +15,9 @@ public class CategoriaController {
     CategoriaService service;
 
     @PostMapping("/categorias")
-    public ResponseEntity<?> crearCategoria(@RequestBody Categoria categoria){
+    public ResponseEntity<?> altaCategoria(@RequestBody Categoria categoria){
         
-        service.crearCategoria(categoria);
+        service.altaCategoria(categoria);
 
         GenericResponse r = new GenericResponse();
         r.isOk = true;

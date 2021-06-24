@@ -17,13 +17,10 @@ public class EmpleadoController {
     @Autowired
     EmpleadoService service;
 
-    @Autowired
-    CategoriaService categoriaService;
-
     @PostMapping("/empleados")
-    public ResponseEntity<?> crearEmpleado(@RequestBody InfoEmpleadoNuevo infoEmpleado){
+    public ResponseEntity<?> altaEmpleado(@RequestBody InfoEmpleadoNuevo infoEmpleado){
         
-        service.crearEmpleado(infoEmpleado);
+        service.altaEmpleado(infoEmpleado);
 
         GenericResponse r = new GenericResponse();
         r.isOk = true;
