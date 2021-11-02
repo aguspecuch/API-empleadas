@@ -22,12 +22,12 @@ public class EmpleadoService {
     @Autowired
     CategoriaService categoriaService;
 
-    public void altaEmpleado(InfoEmpleadoNuevo infoEmpleado){
+    public Empleado altaEmpleado(InfoEmpleadoNuevo infoEmpleado){
 
         Empleado empleado = new Empleado(infoEmpleado.nombre, infoEmpleado.edad, infoEmpleado.sueldo);
         empleado.setCategoria(categoriaService.buscarCategoria(infoEmpleado.categoriaId));
 
-        repo.save(empleado);
+        return repo.save(empleado);
     }
 
     public List<Empleado> traerEmpleados(){
@@ -46,13 +46,13 @@ public class EmpleadoService {
         return null;
     }
 
-    public void bajaEmpleado(Integer empleadoId){
+    public Empleado bajaEmpleado(Integer empleadoId){
 
         Empleado empleado = this.traerEmpleado(empleadoId);
         empleado.setEstado(EstadoEmpleadoEnum.BAJA);
         empleado.setFechaBaja(new Date());
 
-        repo.save(empleado);        
+        return repo.save(empleado);        
     }
 
     public List<Empleado> traerEmpleadosByCategoria(Integer catId){

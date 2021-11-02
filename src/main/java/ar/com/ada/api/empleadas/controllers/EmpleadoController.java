@@ -20,10 +20,11 @@ public class EmpleadoController {
     @PostMapping("/empleados")
     public ResponseEntity<?> altaEmpleado(@RequestBody InfoEmpleadoNuevo infoEmpleado){
         
-        service.altaEmpleado(infoEmpleado);
+        Empleado e = service.altaEmpleado(infoEmpleado);
 
         GenericResponse r = new GenericResponse();
         r.isOk = true;
+        r.id = e.getEmpleadoId();
         r.message = "Empleado creado con exito.";
 
         return ResponseEntity.ok(r);
@@ -44,10 +45,11 @@ public class EmpleadoController {
     @DeleteMapping("/empleados/{id}")
     public ResponseEntity<GenericResponse> bajaEmpleado(@PathVariable Integer id){
 
-        service.bajaEmpleado(id);
+        Empleado e = service.bajaEmpleado(id);
 
         GenericResponse r = new GenericResponse();
         r.isOk = true;
+        r.id = e.getEmpleadoId();
         r.message = "Empleado dado de baja con exito";
 
         return ResponseEntity.ok(r);
